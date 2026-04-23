@@ -1,0 +1,36 @@
+# Training configuration for KOZ-2 object detection model
+
+model:
+  architecture: "placeholder"   # replace with your model architecture
+  num_classes: 7
+  input_size: [512, 512]
+
+training:
+  epochs: 50
+  batch_size: 8
+  learning_rate: 0.0001
+  optimizer: "adam"
+  scheduler: "cosine"
+
+  early_stopping:
+    patience: 10
+    monitor: "val_f1"
+
+data:
+  train_split: 0.8
+  val_split: 0.2
+  augmentation: true
+
+output:
+  save_dir: "models/"
+  checkpoint_every: 5
+
+# Target classes (Technical Regulations Appendix 4)
+classes:
+  - kurgany_tselye
+  - kurgany_povrezhdennye
+  - gorodishcha
+  - fortifikatsii
+  - arkhitektury
+  - finds_points
+  - object_poly
